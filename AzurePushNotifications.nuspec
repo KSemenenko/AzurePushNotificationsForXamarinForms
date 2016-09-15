@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata minClientVersion="2.8.3">
+    <id>ksemenenko.AzurePushNotifications</id>
+    <version>0.0.1.0-pre</version>
+    <title>AzurePushNotifications Plugin for Xamarin and Windows</title>
+    <authors>ksemenenko</authors>
+    <owners>ksemenenko</owners>
+    <licenseUrl>https://github.com/KSemenenko/AzurePushNotificationsForXamarinForms/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/KSemenenko/AzurePushNotificationsForXamarinFormss</projectUrl>
+    <!--<iconUrl>https://github.com/KSemenenko/AzurePushNotificationsForXamarinForms/icons/plugin_icon_nuget.png</iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      This project is a cross platform library for Xamarin, which enables a handy use of AzurePushNotifications in your applications.
+    </description>
+    <summary>AzurePushNotifications Plugin for Xamarin and Windows</summary>
+    <tags>xamarin, AzurePushNotifications, pcl, plugin, plugin for xamarin, windows phone, uwp, winphone, wp8, winrt, android, xamarin.forms, ios, mac, version</tags>
+    <dependencies>
+      <group targetFramework="UAP10"/>
+      <group targetFramework="wp8"/>
+      <group targetFramework="wpa81"/>
+      <group targetFramework="win8"/>
+      <group targetFramework="portable-net45"/>
+      <group targetFramework="MonoAndroid10"/>
+      <group targetFramework="XamariniOS10"/>
+      <group targetFramework="XamarinMac20"/>
+      <group targetFramework="MonoTouch"/>
+    </dependencies>
+  </metadata>
+  <files>
+    
+    <!--Portable Profile259 -->
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications\bin\Release\Plugin.AzurePushNotifications.dll" target="lib\portable-net45+win8+wpa81+wp8\Plugin.AzurePushNotifications.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications\bin\Release\Plugin.AzurePushNotifications.xml" target="lib\portable-net45+win8+wpa81+wp8\Plugin.AzurePushNotifications.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications\bin\Release\Plugin.AzurePushNotifications.pdb" target="lib\portable-net45+win8+wpa81+wp8\Plugin.AzurePushNotifications.pdb" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.dll" target="lib\portable-net45+win8+wpa81+wp8\Plugin.AzurePushNotifications.Abstractions.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.xml" target="lib\portable-net45+win8+wpa81+wp8\Plugin.AzurePushNotifications.Abstractions.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.pdb" target="lib\portable-net45+win8+wpa81+wp8\Plugin.AzurePushNotifications.Abstractions.pdb" />
+
+
+    <!--Portable Profile111 -->                                                                                              
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications\bin\Release\Plugin.AzurePushNotifications.dll" target="lib\portable-net45+win8+wpa81\Plugin.AzurePushNotifications.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications\bin\Release\Plugin.AzurePushNotifications.xml" target="lib\portable-net45+win8+wpa81\Plugin.AzurePushNotifications.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications\bin\Release\Plugin.AzurePushNotifications.pdb" target="lib\portable-net45+win8+wpa81\Plugin.AzurePushNotifications.pdb" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.dll" target="lib\portable-net45+win8+wpa81\Plugin.AzurePushNotifications.Abstractions.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.xml" target="lib\portable-net45+win8+wpa81\Plugin.AzurePushNotifications.Abstractions.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.pdb" target="lib\portable-net45+win8+wpa81\Plugin.AzurePushNotifications.Abstractions.pdb" />
+    
+    <!--Portable Profile78 -->                                                                                              
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications\bin\Release\Plugin.AzurePushNotifications.dll" target="lib\portable-net45+win8+wp8\Plugin.AzurePushNotifications.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications\bin\Release\Plugin.AzurePushNotifications.xml" target="lib\portable-net45+win8+wp8\Plugin.AzurePushNotifications.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications\bin\Release\Plugin.AzurePushNotifications.pdb" target="lib\portable-net45+win8+wp8\Plugin.AzurePushNotifications.pdb" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.dll" target="lib\portable-net45+win8+wp8\Plugin.AzurePushNotifications.Abstractions.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.xml" target="lib\portable-net45+win8+wp8\Plugin.AzurePushNotifications.Abstractions.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.pdb" target="lib\portable-net45+win8+wp8\Plugin.AzurePushNotifications.Abstractions.pdb" />
+
+    <!--MonoTouch-->                                                                                              
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications\bin\Release\Plugin.AzurePushNotifications.dll" target="lib\MonoTouch\Plugin.AzurePushNotifications.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications\bin\Release\Plugin.AzurePushNotifications.xml" target="lib\MonoTouch\Plugin.AzurePushNotifications.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications\bin\Release\Plugin.AzurePushNotifications.pdb" target="lib\MonoTouch\Plugin.AzurePushNotifications.pdb" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.dll" target="lib\MonoTouch\Plugin.AzurePushNotifications.Abstractions.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.xml" target="lib\MonoTouch\Plugin.AzurePushNotifications.Abstractions.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.pdb" target="lib\MonoTouch\Plugin.AzurePushNotifications.Abstractions.pdb" />
+    
+    <!--WP81-->
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.WindowsPhone81\bin\Release\Plugin.AzurePushNotifications.dll" target="lib\wpa81\Plugin.AzurePushNotifications.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.WindowsPhone81\bin\Release\Plugin.AzurePushNotifications.xml" target="lib\wpa81\Plugin.AzurePushNotifications.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.WindowsPhone81\bin\Release\Plugin.AzurePushNotifications.pdb" target="lib\wpa81\Plugin.AzurePushNotifications.pdb" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.dll" target="lib\wpa81\Plugin.AzurePushNotifications.Abstractions.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.xml" target="lib\wpa81\Plugin.AzurePushNotifications.Abstractions.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.pdb" target="lib\wpa81\Plugin.AzurePushNotifications.Abstractions.pdb" />
+
+    <!--WinStore-->
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.WindowsStore\bin\Release\Plugin.AzurePushNotifications.dll" target="lib\win8\Plugin.AzurePushNotifications.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.WindowsStore\bin\Release\Plugin.AzurePushNotifications.xml" target="lib\win8\Plugin.AzurePushNotifications.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.WindowsStore\bin\Release\Plugin.AzurePushNotifications.pdb" target="lib\win8\Plugin.AzurePushNotifications.pdb" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.dll" target="lib\win8\Plugin.AzurePushNotifications.Abstractions.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.xml" target="lib\win8\Plugin.AzurePushNotifications.Abstractions.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.pdb" target="lib\win8\Plugin.AzurePushNotifications.Abstractions.pdb" />
+
+    <!--Xamarin.Android-->
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Android\bin\Release\Plugin.AzurePushNotifications.dll" target="lib\MonoAndroid10\Plugin.AzurePushNotifications.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Android\bin\Release\Plugin.AzurePushNotifications.xml" target="lib\MonoAndroid10\Plugin.AzurePushNotifications.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Android\bin\Release\Plugin.AzurePushNotifications.pdb" target="lib\MonoAndroid10\Plugin.AzurePushNotifications.pdb" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.dll" target="lib\MonoAndroid10\Plugin.AzurePushNotifications.Abstractions.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.xml" target="lib\MonoAndroid10\Plugin.AzurePushNotifications.Abstractions.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.pdb" target="lib\MonoAndroid10\Plugin.AzurePushNotifications.Abstractions.pdb" />
+
+    <!--Xamarin.iOS-->
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.iOS\bin\Release\Plugin.AzurePushNotifications.dll" target="lib\XamariniOS10\Plugin.AzurePushNotifications.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.iOS\bin\Release\Plugin.AzurePushNotifications.xml" target="lib\XamariniOS10\Plugin.AzurePushNotifications.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.dll" target="lib\XamariniOS10\Plugin.AzurePushNotifications.Abstractions.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.xml" target="lib\XamariniOS10\Plugin.AzurePushNotifications.Abstractions.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.pdb" target="lib\XamariniOS10\Plugin.AzurePushNotifications.Abstractions.pdb" />
+
+    <!--UWP-->
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.UWP\bin\Release\Plugin.AzurePushNotifications.dll" target="lib\UAP10\Plugin.AzurePushNotifications.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.UWP\bin\Release\Plugin.AzurePushNotifications.xml" target="lib\UAP10\Plugin.AzurePushNotifications.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.UWP\bin\Release\Plugin.AzurePushNotifications.pdb" target="lib\UAP10\Plugin.AzurePushNotifications.pdb" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.dll" target="lib\UAP10\Plugin.AzurePushNotifications.Abstractions.dll" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.xml" target="lib\UAP10\Plugin.AzurePushNotifications.Abstractions.xml" />
+    <file src="Plugin.AzurePushNotifications\Plugin.AzurePushNotifications.Abstractions\bin\Release\Plugin.AzurePushNotifications.Abstractions.pdb" target="lib\UAP10\Plugin.AzurePushNotifications.Abstractions.pdb" />
+        
+  </files>
+</package>
