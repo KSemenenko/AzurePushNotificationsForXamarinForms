@@ -36,7 +36,6 @@
       <group targetFramework="portable-net45"/>
       <group targetFramework="MonoAndroid403">
         <dependency id="Xamarin.Azure.NotificationHubs.Android" version="0.4.0" />
-        <dependency id="Xamarin.GooglePlayServices.Gcm" version="29.0.0.2" />
         <dependency id="Newtonsoft.Json" version="9.0.1" />
       </group>
       <group targetFramework="XamariniOS10">

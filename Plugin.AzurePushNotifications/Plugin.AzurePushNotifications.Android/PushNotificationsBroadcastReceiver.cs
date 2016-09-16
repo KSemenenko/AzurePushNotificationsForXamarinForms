@@ -17,6 +17,6 @@ namespace Plugin.AzurePushNotifications
         //IMPORTANT: Change this to your own Sender ID!
         //The SENDER_ID is your Google API Console App Project Number
         public static string[] SENDER_IDS = {PushNotificationCredentials.GoogleApiSenderId};
-        public const string TAG = "MyBroadcastReceiver-GCM";
+        public const string TAG = "PushNotificationsBroadcastReceiver-GCM";
     }
 }
