@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using AzurePushNotifications.Shared;
 using Plugin.AzurePushNotifications;
 using Xamarin.Forms;
 
@@ -14,6 +15,14 @@ namespace TestFormsApp
         public App()
         {
 
+            PushNotificationCredentials.Tags = new string[] { };
+            PushNotificationCredentials.GoogleApiSenderId = "google sender id";
+            PushNotificationCredentials.AzureNotificationHubName = "hub name";
+            PushNotificationCredentials.AzureListenConnectionString = "Endpoint";
+
+
+
+            CrossAzurePushNotifications.Current.RegisterForAzurePushNotification();
 
             B_Clicked(null, null);
             var button = new Button();

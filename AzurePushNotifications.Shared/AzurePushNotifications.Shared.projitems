@@ -10,8 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AzurePushNotificationsImplementation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Parsers\CsvFileReader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Parsers\CsvRow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\SharedAssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PushNotificationCredentials.cs" />
   </ItemGroup>
 </Project>

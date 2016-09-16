@@ -9,9 +9,14 @@ namespace Plugin.AzurePushNotifications
 {
     public partial class AzurePushNotificationsImplementation : IAzurePushNotifications
     {
-        private string FileLoad(string path)
+        public void RegisterForAzurePushNotification()
         {
-            return string.Empty;
+            throw new NotImplementedException();
+        }
+
+        public void UnregisterFromAzurePushNotification()
+        {
+            throw new NotImplementedException();
         }
     }
 }

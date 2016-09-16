@@ -36,7 +36,6 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\AzurePushNotifications.Shared\Properties\SharedAssemblyInfo.cs">
@@ -44,6 +43,7 @@
     </Compile>
     <Compile Include="IAzurePushNotifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PushNotificationReceivedEventArgs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
