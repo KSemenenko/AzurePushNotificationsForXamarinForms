@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Windows.Networking.PushNotifications;
 using Windows.Storage;
-using AzurePushNotifications.Shared;
 using Microsoft.WindowsAzure.Messaging;
 using Plugin.AzurePushNotifications.Abstractions;
 
@@ -30,10 +29,12 @@ namespace Plugin.AzurePushNotifications
             channel.PushNotificationReceived += Channel_PushNotificationReceived;
         }
 
-        private void Channel_PushNotificationReceived(PushNotificationChannel sender, Windows.Networking.PushNotifications.PushNotificationReceivedEventArgs args)
+        private void Channel_PushNotificationReceived(PushNotificationChannel sender, PushNotificationReceivedEventArgs args)
         {
-            Debug.WriteLine("Channel_ShellToastNotificationReceived");
-            Debug.WriteLine(args.RawNotification);
+            var conent = new ReceivedMessageEventArgs(args.RawNotification.Content);
+            var message = OnMessageReceived;
+            message?.Invoke(null, conent);
+            Debug.WriteLine("Channel_PushNotificationReceived");
         }
 
         public async void UnregisterFromAzurePushNotification()

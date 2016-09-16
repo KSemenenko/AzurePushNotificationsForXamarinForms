@@ -17,6 +17,8 @@
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <DevInstrumentationEnabled>True</DevInstrumentationEnabled>
     <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,10 +60,17 @@
       <Link>AzurePushNotifications.cs</Link>
     </Compile>
     <Compile Include="AzurePushNotificationsImplementation.cs" />
+    <Compile Include="CrossAzurePushNotificationsPlatform.cs" />
+    <Compile Include="GCM\Constants.cs" />
+    <Compile Include="GCM\GcmBroadcastReceiverBase.cs" />
+    <Compile Include="GCM\GcmServiceBase.cs" />
+    <Compile Include="GCM\InternalGcmClient.cs" />
+    <Compile Include="PushNotificationsBroadcastReceiver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="..\..\AzurePushNotifications.Shared\Properties\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="PushNotificationsGcmService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Plugin.AzurePushNotifications.Abstractions\Plugin.AzurePushNotifications.Abstractions.csproj">

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using AzurePushNotifications.Shared;
 using Plugin.AzurePushNotifications;
 using Xamarin.Forms;
 
@@ -23,6 +22,12 @@ namespace TestFormsApp
 
 
             CrossAzurePushNotifications.Current.RegisterForAzurePushNotification();
+
+            CrossAzurePushNotifications.Current.OnMessageReceived += (sender, ev) =>
+            {
+                Debug.WriteLine(ev.Content);
+            };
+
 
             B_Clicked(null, null);
             var button = new Button();

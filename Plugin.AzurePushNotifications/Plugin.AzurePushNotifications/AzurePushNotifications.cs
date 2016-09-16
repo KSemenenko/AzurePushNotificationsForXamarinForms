@@ -8,7 +8,7 @@ namespace Plugin.AzurePushNotifications
     /// <summary>
     /// Cross platform Plugin.AzurePushNotifications implemenations
     /// </summary>
-    public class CrossAzurePushNotifications
+    public partial class CrossAzurePushNotifications
     {
         private static readonly Lazy<IAzurePushNotifications> Implementation = 
             new Lazy<IAzurePushNotifications>(CreatePluginAzurePushNotifications, System.Threading.LazyThreadSafetyMode.PublicationOnly);

@@ -8,54 +8,13 @@ namespace Plugin.AzurePushNotifications.Abstractions
 {
     public sealed class ReceivedMessageEventArgs
     {
-        //
-        // Summary:
-        //     Gets the content of a badge update to perform in response to this push notification.
-        //
-        // Returns:
-        //     Holds the update information. If NotificationType is not of type Badge, this
-        //     value is NULL.
-        public BadgeNotification BadgeNotification { get; }
-        //
-        // Summary:
-        //     Gets or sets whether Windows should perform its default handling of the notification.
-        //
-        // Returns:
-        //     True to prevent default processing of the notification by Windows, otherwise
-        //     false. The default value is false.
-        public System.Boolean Cancel { get; set; }
-        //
-        // Summary:
-        //     Gets the type of push notification that has been received from the app server.
-        //
-        // Returns:
-        //     The type (badge, tile, toast, or raw) of push notification that has been received.
-        public PushNotificationType NotificationType { get; }
-        //
-        // Summary:
-        //     Gets the app-defined content contained in this push notification, the contents
-        //     of which are used to perform a background task on the app.
-        //
-        // Returns:
-        //     Encapsulates the app-defined content of the raw notification. If NotificationType
-        //     is not of type Raw, this value is NULL.
-        public RawNotification RawNotification { get; }
-        //
-        // Summary:
-        //     Gets the content of a tile update to perform in response to this push notification.
-        //
-        // Returns:
-        //     Holds the update information. If NotificationType is not of type Tile, this value
-        //     is NULL.
-        public TileNotification TileNotification { get; }
-        //
-        // Summary:
-        //     Gets the content of a toast to display in response to this push notification.
-        //
-        // Returns:
-        //     Holds the toast information. If NotificationType is not of type Toast, this value
-        //     is NULL.
-        public BadgeNotification ToastNotification { get; }
+
+        public ReceivedMessageEventArgs(string content)
+        {
+            Content = content;
+        }
+        public string Content { get;}
+        
     }
 
     //

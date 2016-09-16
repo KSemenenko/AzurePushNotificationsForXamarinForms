@@ -11,6 +11,6 @@ namespace Plugin.AzurePushNotifications
 {
     public partial class AzurePushNotificationsImplementation : IAzurePushNotifications
     {
-        public event EventHandler<ReceivedMessageEventArgs> OnMessage;
+        public event EventHandler<ReceivedMessageEventArgs> OnMessageReceived;
     }
 }

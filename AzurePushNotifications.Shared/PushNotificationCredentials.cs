@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AzurePushNotifications.Shared
+namespace Plugin.AzurePushNotifications
 {
     /// <summary>
     /// Contains credentials for accessing Microsoft Azure Push Notifications 

@@ -20,6 +20,6 @@ namespace Plugin.AzurePushNotifications.Abstractions
         /// </summary>
         void UnregisterFromAzurePushNotification();
 
-        event EventHandler<ReceivedMessageEventArgs> OnMessage;
+        event EventHandler<ReceivedMessageEventArgs> OnMessageReceived;
     }
 }

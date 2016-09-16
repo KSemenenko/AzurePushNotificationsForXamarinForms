@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Plugin.AzurePushNotifications;
 using Environment = System.Environment;
 
 namespace TestFormsApp.Droid
@@ -18,6 +19,8 @@ namespace TestFormsApp.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            CrossAzurePushNotifications.Platform.InitFromMainActivity(this);
 
             LoadApplication(new TestFormsApp.App());
         }

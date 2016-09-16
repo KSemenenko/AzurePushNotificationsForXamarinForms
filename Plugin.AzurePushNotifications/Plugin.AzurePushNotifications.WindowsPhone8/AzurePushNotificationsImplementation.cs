@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using Windows.Storage;
-using AzurePushNotifications.Shared;
 using Microsoft.Phone.Notification;
 using Microsoft.WindowsAzure.Messaging;
 using Plugin.AzurePushNotifications.Abstractions;
@@ -21,24 +20,22 @@ namespace Plugin.AzurePushNotifications
                 channel.Open();
                 channel.BindToShellToast();
 
+                channel.ChannelUriUpdated += async (o, args) =>
+                {
+                    var hub = new NotificationHub(PushNotificationCredentials.AzureNotificationHubName, PushNotificationCredentials.AzureListenConnectionString);
 
+                    await hub.RegisterNativeAsync(args.ChannelUri.ToString(), PushNotificationCredentials.Tags);
+                };
             }
-
-            channel.ChannelUriUpdated += async (o, args) =>
-            {
-                var hub = new NotificationHub(PushNotificationCredentials.AzureNotificationHubName, PushNotificationCredentials.AzureListenConnectionString);
-
-                await hub.RegisterNativeAsync(args.ChannelUri.ToString(), PushNotificationCredentials.Tags);
-            };
-
-
             channel.ShellToastNotificationReceived += Channel_ShellToastNotificationReceived;
         }
 
         private void Channel_ShellToastNotificationReceived(object sender, NotificationEventArgs e)
         {
-            Debug.WriteLine("Channel_ShellToastNotificationReceived");
-            Debug.WriteLine(e.Collection);
+            var conent = new ReceivedMessageEventArgs(e.Collection.ToString());
+            var message = OnMessageReceived;
+            message?.Invoke(null, conent);
+            Debug.WriteLine("Channel_PushNotificationReceived");
         }
 
         public void UnregisterFromAzurePushNotification()
@@ -58,6 +55,8 @@ namespace Plugin.AzurePushNotifications
                 await hub.UnregisterNativeAsync();
                 await hub.UnregisterAllAsync(args.ChannelUri.ToString());
             };
+
+            channel.ShellToastNotificationReceived -= Channel_ShellToastNotificationReceived;
         }
     }
 }

@@ -38,8 +38,8 @@
     <Compile Include="..\Plugin.AzurePushNotifications\AzurePushNotifications.cs">
       <Link>AzurePushNotifications.cs</Link>
     </Compile>
-    <Compile Include="DeviceInfo.cs" />
     <Compile Include="AzurePushNotificationsImplementation.cs" />
+    <Compile Include="CrossAzurePushNotificationsPlatform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="..\..\AzurePushNotifications.Shared\Properties\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
