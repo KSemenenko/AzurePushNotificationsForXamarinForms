@@ -1,6 +1,21 @@
 # AzurePushNotificationsForXamarinForms
 Azure Push Notifications for Xamarin Forms
 
+# Alpha version
+
+## Available at NuGet. 
+https://www.nuget.org/packages/ksemenenko.AzurePushNotifications/
+
+|Platform|Supported|Version|
+| ------------------- | :-----------: | :------------------: |
+|Xamarin.iOS Unified|Yes|iOS 6+|
+|Xamarin.Android|Yes|API 10+|
+|Windows Phone 8|Yes|8.0+|
+|Windows Phone 8.1|Yes|8.1+|
+|Windows Store|Yes|8.1+|
+|Windows 10 UWP|Yes|10+|
+
+
 
 How to use?
 
@@ -51,3 +66,11 @@ CrossAzurePushNotifications.Current.OnMessageReceived += (sender, ev) =>
     Debug.WriteLine(ev.Content);
 };
 ```
+
+
+## Thanks
+https://github.com/Redth/GCM.Client
+https://azure.microsoft.com/en-us/documentation/articles/xamarin-notification-hubs-ios-push-notification-apns-get-started/
+https://azure.microsoft.com/en-us/documentation/articles/xamarin-notification-hubs-push-notifications-android-gcm/
+https://components.xamarin.com/gettingstarted/azure-messaging
+https://github.com/HoussemDellai/Azure-Push-Notification-For-Xamarin
