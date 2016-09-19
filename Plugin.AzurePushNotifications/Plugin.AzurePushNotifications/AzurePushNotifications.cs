@@ -1,27 +1,26 @@
 ﻿using System;
-using Plugin.AzurePushNotifications;
+using System.Threading;
 using Plugin.AzurePushNotifications.Abstractions;
-
 
 namespace Plugin.AzurePushNotifications
 {
     /// <summary>
-    /// Cross platform Plugin.AzurePushNotifications implemenations
+    ///     Cross platform Plugin.AzurePushNotifications implemenations
     /// </summary>
     public partial class CrossAzurePushNotifications
     {
-        private static readonly Lazy<IAzurePushNotifications> Implementation = 
-            new Lazy<IAzurePushNotifications>(CreatePluginAzurePushNotifications, System.Threading.LazyThreadSafetyMode.PublicationOnly);
+        private static readonly Lazy<IAzurePushNotifications> Implementation =
+            new Lazy<IAzurePushNotifications>(CreatePluginAzurePushNotifications, LazyThreadSafetyMode.PublicationOnly);
 
         /// <summary>
-        /// Current settings to use
+        ///     Current settings to use
         /// </summary>
         public static IAzurePushNotifications Current
         {
             get
             {
                 var ret = Implementation.Value;
-                if (ret == null)
+                if(ret == null)
                 {
                     throw NotImplementedInReferenceAssembly();
                 }
@@ -34,7 +33,7 @@ namespace Plugin.AzurePushNotifications
             return new AzurePushNotificationsImplementation();
         }
 
-        static Exception NotImplementedInReferenceAssembly()
+        private static Exception NotImplementedInReferenceAssembly()
         {
             return
                 new NotImplementedException(
@@ -43,4 +42,3 @@ namespace Plugin.AzurePushNotifications
         }
     }
 }
-

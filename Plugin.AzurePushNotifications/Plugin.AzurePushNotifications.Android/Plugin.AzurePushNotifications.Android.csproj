@@ -65,6 +65,7 @@
     <Compile Include="GCM\GcmBroadcastReceiverBase.cs" />
     <Compile Include="GCM\GcmServiceBase.cs" />
     <Compile Include="GCM\InternalGcmClient.cs" />
+    <Compile Include="GCM\Logger.cs" />
     <Compile Include="PushNotificationsBroadcastReceiver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="..\..\AzurePushNotifications.Shared\Properties\SharedAssemblyInfo.cs">

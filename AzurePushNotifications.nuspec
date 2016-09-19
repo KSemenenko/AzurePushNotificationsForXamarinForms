@@ -4,7 +4,7 @@
   <metadata minClientVersion="2.8.3">
     <id>ksemenenko.AzurePushNotifications</id>
     <version>0.0.1.0-pre</version>
-    <title>AzurePushNotifications Plugin for Xamarin and Windows</title>
+    <title>Azure Push Notifications Plugin for Xamarin and Windows</title>
     <authors>ksemenenko</authors>
     <owners>ksemenenko</owners>
     <licenseUrl>https://github.com/KSemenenko/AzurePushNotificationsForXamarinForms/blob/master/LICENSE</licenseUrl>
@@ -14,8 +14,8 @@
     <description>
       This project is a cross platform library for Xamarin, which enables a handy use of AzurePushNotifications in your applications.
     </description>
-    <summary>AzurePushNotifications Plugin for Xamarin and Windows</summary>
-    <tags>xamarin, AzurePushNotifications, pcl, plugin, plugin for xamarin, windows phone, uwp, winphone, wp8, winrt, android, xamarin.forms, ios, mac, version</tags>
+    <summary>Azure Push Notifications Plugin for Xamarin and Windows</summary>
+    <tags>xamarin, azure, push, notifications, pushhub, hub, pcl, plugin, plugin for xamarin, windows phone, uwp, winphone, wp8, winrt, android, xamarin.forms, ios, mac, version</tags>
     <dependencies>
       <group targetFramework="UAP10">
         <dependency id="WindowsAzure.Messaging.Managed" version="0.1.7.9" />

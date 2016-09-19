@@ -5,7 +5,7 @@ using System.Reflection;
 // associated with an assembly.
 
 [assembly: AssemblyTitle("Plugin.AzurePushNotifications")]
-[assembly: AssemblyDescription("This project is a cross platform library for Xamarin Forms, which enables a handy use of AzurePushNotifications in your applications.")]
+[assembly: AssemblyDescription("This project is a cross platform library for Xamarin Forms, which enables a handy use of Azure Push Notifications in your applications.")]
 [assembly: AssemblyCompany("ksemenenko")]
 [assembly: AssemblyProduct("Plugin.AzurePushNotifications")]
 [assembly: AssemblyCopyright("Copyright © K.Semenenko 2016")]

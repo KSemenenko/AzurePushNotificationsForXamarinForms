@@ -8,7 +8,7 @@ namespace Gcm.Client
         public override void OnReceive(Context context, Intent intent)
         {
             Logger.Debug("OnReceive: " + intent.Action);
-            var className = context.PackageName + Constants.DEFAULT_INTENT_SERVICE_CLASS_NAME;
+            var className = context.PackageName + Constants.DefaultIntentServiceClassName;
 
             Logger.Debug("GCM IntentService Class: " + className);
 

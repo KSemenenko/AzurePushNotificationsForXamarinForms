@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 
 namespace Plugin.AzurePushNotifications.Abstractions
 {
@@ -9,17 +8,20 @@ namespace Plugin.AzurePushNotifications.Abstractions
     public interface IAzurePushNotifications
     {
         /// <summary>
-        /// Registers for Azure Push Notification using 
-        /// the credentials provided in PushNotificationCredentials class.
+        ///     Registers for Azure Push Notification using
+        ///     the credentials provided in PushNotificationCredentials class.
         /// </summary>
         void RegisterForAzurePushNotification();
 
         /// <summary>
-        /// Unregisters from Azure Push Notification using 
-        /// the credentials provided in PushNotificationCredentials class.
+        ///     Unregisters from Azure Push Notification using
+        ///     the credentials provided in PushNotificationCredentials class.
         /// </summary>
         void UnregisterFromAzurePushNotification();
 
+        /// <summary>
+        ///     It's a new message 
+        /// </summary>
         event EventHandler<ReceivedMessageEventArgs> OnMessageReceived;
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
 using Windows.Networking.PushNotifications;
 using Microsoft.WindowsAzure.Messaging;
 using Plugin.AzurePushNotifications.Abstractions;
@@ -13,7 +12,7 @@ namespace Plugin.AzurePushNotifications
 
         public async void RegisterForAzurePushNotification()
         {
-            if (channel != null)
+            if(channel != null)
             {
                 channel.PushNotificationReceived -= Channel_PushNotificationReceived;
             }
@@ -28,17 +27,9 @@ namespace Plugin.AzurePushNotifications
             channel.PushNotificationReceived += Channel_PushNotificationReceived;
         }
 
-        private void Channel_PushNotificationReceived(PushNotificationChannel sender, Windows.Networking.PushNotifications.PushNotificationReceivedEventArgs args)
-        {
-            var conent = new ReceivedMessageEventArgs(args.RawNotification.Content);
-            var message = OnMessageReceived;
-            message?.Invoke(null, conent);
-            Debug.WriteLine("Channel_PushNotificationReceived");
-        }
-
         public async void UnregisterFromAzurePushNotification()
         {
-            if (channel != null)
+            if(channel != null)
             {
                 channel.PushNotificationReceived -= Channel_PushNotificationReceived;
             }
@@ -49,6 +40,14 @@ namespace Plugin.AzurePushNotifications
             await hub.UnregisterNativeAsync();
 
             channel = null;
+        }
+
+        private void Channel_PushNotificationReceived(PushNotificationChannel sender, PushNotificationReceivedEventArgs args)
+        {
+            var conent = new ReceivedMessageEventArgs(args.RawNotification.Content);
+            var message = OnMessageReceived;
+            message?.Invoke(null, conent);
+            Debug.WriteLine("Channel_PushNotificationReceived");
         }
     }
 }

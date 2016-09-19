@@ -9,6 +9,10 @@ namespace Plugin.AzurePushNotifications.Abstractions
     public sealed class ReceivedMessageEventArgs
     {
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
         public ReceivedMessageEventArgs(string content)
         {
             Content = content;

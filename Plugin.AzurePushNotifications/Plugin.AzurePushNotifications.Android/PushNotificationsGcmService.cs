@@ -2,12 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using WindowsAzure.Messaging;
-using Android;
 using Android.App;
 using Android.Content;
 using Android.Util;
 using Gcm.Client;
-using Java.Net;
 
 namespace Plugin.AzurePushNotifications
 {
@@ -16,7 +14,7 @@ namespace Plugin.AzurePushNotifications
     {
         private static NotificationHub hub;
 
-        public PushNotificationsGcmService() : base(PushNotificationsBroadcastReceiver.SENDER_IDS)
+        public PushNotificationsGcmService() : base(PushNotificationsBroadcastReceiver.SenderIds)
         {
         }
 
@@ -25,10 +23,10 @@ namespace Plugin.AzurePushNotifications
             hub = new NotificationHub(PushNotificationCredentials.AzureNotificationHubName, PushNotificationCredentials.AzureListenConnectionString, context);
         }
 
-        public static void Register(Context Context)
+        public static void Register(Context context)
         {
             // Makes this easier to call from our Activity
-            GcmClient.Register(Context, PushNotificationsBroadcastReceiver.SENDER_IDS);
+            GcmClient.Register(context, PushNotificationsBroadcastReceiver.SenderIds);
         }
 
         protected override void OnRegistered(Context context, string registrationId)
@@ -42,9 +40,9 @@ namespace Plugin.AzurePushNotifications
 
             ////////////////
 
-            Log.Verbose(PushNotificationsBroadcastReceiver.TAG, "GCM Registered: " + registrationId);
+            Log.Verbose(PushNotificationsBroadcastReceiver.Tag, "GCM Registered: " + registrationId);
 
-            createNotification("PushHandlerService-GCM Registered...",
+            CreateNotification("PushHandlerService-GCM Registered...",
                 "The device has been Registered!");
 
             hub = new NotificationHub(PushNotificationCredentials.AzureNotificationHubName, PushNotificationCredentials.AzureListenConnectionString, context);
@@ -54,7 +52,7 @@ namespace Plugin.AzurePushNotifications
             }
             catch(Exception ex)
             {
-                Log.Error(PushNotificationsBroadcastReceiver.TAG, ex.Message);
+                Log.Error(PushNotificationsBroadcastReceiver.Tag, ex.Message);
             }
 
             //var tags = new List<string>() { "falcons" }; // create tags if you want
@@ -66,7 +64,7 @@ namespace Plugin.AzurePushNotifications
             }
             catch(Exception ex)
             {
-                Log.Error(PushNotificationsBroadcastReceiver.TAG, ex.Message);
+                Log.Error(PushNotificationsBroadcastReceiver.Tag, ex.Message);
             }
         }
 
@@ -95,7 +93,7 @@ namespace Plugin.AzurePushNotifications
 
             ////////////////////////
 
-            Log.Info(PushNotificationsBroadcastReceiver.TAG, "GCM Message Received!");
+            Log.Info(PushNotificationsBroadcastReceiver.Tag, "GCM Message Received!");
 
             var msg = new StringBuilder();
 
@@ -131,7 +129,7 @@ namespace Plugin.AzurePushNotifications
             //Some more serious error happened
         }
 
-        private void createNotification(string title, string desc)
+        private void CreateNotification(string title, string desc)
         {
             //Create notification
             var notificationManager = GetSystemService(NotificationService) as NotificationManager;
@@ -155,7 +153,7 @@ namespace Plugin.AzurePushNotifications
             //dialogNotify(title, desc);
         }
 
-        protected void dialogNotify(string title, string message)
+        protected void DialogNotify(string title, string message)
         {
             //MainActivity.instance.RunOnUiThread(() =>
             //{

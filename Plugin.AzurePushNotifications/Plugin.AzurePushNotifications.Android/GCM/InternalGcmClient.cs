@@ -9,13 +9,13 @@ namespace Gcm.Client
 {
     public class GcmClient
     {
-        private const string BACKOFF_MS = "backoff_ms";
-        private const string GSF_PACKAGE = "com.google.android.gsf";
-        private const string PREFERENCES = "com.google.android.gcm";
-        private const int DEFAULT_BACKOFF_MS = 3000;
-        private const string PROPERTY_REG_ID = "regId";
-        private const string PROPERTY_APP_VERSION = "appVersion";
-        private const string PROPERTY_ON_SERVER = "onServer";
+        private const string BackoffMs = "backoff_ms";
+        private const string GsfPackage = "com.google.android.gsf";
+        private const string Preferences = "com.google.android.gcm";
+        private const int DefaultBackoffMs = 3000;
+        private const string PropertyRegId = "regId";
+        private const string PropertyAppVersion = "appVersion";
+        private const string PropertyOnServer = "onServer";
 
         //static GCMBroadcastReceiver sRetryReceiver;
 
@@ -31,11 +31,11 @@ namespace Gcm.Client
 
             try
             {
-                packageManager.GetPackageInfo(GSF_PACKAGE, 0);
+                packageManager.GetPackageInfo(GsfPackage, 0);
             }
             catch
             {
-                throw new InvalidOperationException("Device does not have package " + GSF_PACKAGE);
+                throw new InvalidOperationException("Device does not have package " + GsfPackage);
             }
         }
 
@@ -88,7 +88,7 @@ namespace Gcm.Client
 
             foreach(var receiver in receivers)
             {
-                if(Constants.PERMISSION_GCM_INTENTS.Equals(receiver.Permission))
+                if(Constants.PermissionGcmIntents.Equals(receiver.Permission))
                 {
                     allowedReceivers.Add(receiver.Name);
                 }
@@ -96,11 +96,11 @@ namespace Gcm.Client
 
             if(allowedReceivers.Count <= 0)
             {
-                throw new InvalidOperationException("No receiver allowed to receive " + Constants.PERMISSION_GCM_INTENTS);
+                throw new InvalidOperationException("No receiver allowed to receive " + Constants.PermissionGcmIntents);
             }
 
-            CheckReceiver(context, allowedReceivers, Constants.INTENT_FROM_GCM_REGISTRATION_CALLBACK);
-            CheckReceiver(context, allowedReceivers, Constants.INTENT_FROM_GCM_MESSAGE);
+            CheckReceiver(context, allowedReceivers, Constants.IntentFromGcmRegistrationCallback);
+            CheckReceiver(context, allowedReceivers, Constants.IntentFromGcmMessage);
         }
 
         private static void CheckReceiver(Context context, HashSet<string> allowedReceivers, string action)
@@ -125,7 +125,7 @@ namespace Gcm.Client
                 var name = receiver.ActivityInfo.Name;
                 if(!allowedReceivers.Contains(name))
                 {
-                    throw new InvalidOperationException("Receiver " + name + " is not set with permission " + Constants.PERMISSION_GCM_INTENTS);
+                    throw new InvalidOperationException("Receiver " + name + " is not set with permission " + Constants.PermissionGcmIntents);
                 }
             }
         }
@@ -135,10 +135,10 @@ namespace Gcm.Client
             SetRetryBroadcastReceiver(context);
             ResetBackoff(context);
 
-            internalRegister(context, senderIds);
+            InternalRegister(context, senderIds);
         }
 
-        internal static void internalRegister(Context context, params string[] senderIds)
+        internal static void InternalRegister(Context context, params string[] senderIds)
         {
             if(senderIds == null || senderIds.Length <= 0)
             {
@@ -149,11 +149,11 @@ namespace Gcm.Client
 
             Logger.Debug("Registering app " + context.PackageName + " of senders " + senders);
 
-            var intent = new Intent(Constants.INTENT_TO_GCM_REGISTRATION);
-            intent.SetPackage(GSF_PACKAGE);
-            intent.PutExtra(Constants.EXTRA_APPLICATION_PENDING_INTENT,
+            var intent = new Intent(Constants.IntentToGcmRegistration);
+            intent.SetPackage(GsfPackage);
+            intent.PutExtra(Constants.ExtraApplicationPendingIntent,
                 PendingIntent.GetBroadcast(context, 0, new Intent(), 0));
-            intent.PutExtra(Constants.EXTRA_SENDER, senders);
+            intent.PutExtra(Constants.ExtraSender, senders);
 
             context.StartService(intent);
         }
@@ -162,16 +162,16 @@ namespace Gcm.Client
         {
             SetRetryBroadcastReceiver(context);
             ResetBackoff(context);
-            internalUnRegister(context);
+            InternalUnRegister(context);
         }
 
-        internal static void internalUnRegister(Context context)
+        internal static void InternalUnRegister(Context context)
         {
             Logger.Debug("Unregistering app " + context.PackageName);
 
-            var intent = new Intent(Constants.INTENT_TO_GCM_UNREGISTRATION);
-            intent.SetPackage(GSF_PACKAGE);
-            intent.PutExtra(Constants.EXTRA_APPLICATION_PENDING_INTENT,
+            var intent = new Intent(Constants.IntentToGcmUnregistration);
+            intent.SetPackage(GsfPackage);
+            intent.PutExtra(Constants.ExtraApplicationPendingIntent,
                 PendingIntent.GetBroadcast(context, 0, new Intent(), 0));
 
             context.StartService(intent);
@@ -197,11 +197,11 @@ namespace Gcm.Client
 
         public static string GetRegistrationId(Context context)
         {
-            var prefs = GetGCMPreferences(context);
+            var prefs = GetGcmPreferences(context);
 
-            var registrationId = prefs.GetString(PROPERTY_REG_ID, "");
+            var registrationId = prefs.GetString(PropertyRegId, "");
 
-            var oldVersion = prefs.GetInt(PROPERTY_APP_VERSION, int.MinValue);
+            var oldVersion = prefs.GetInt(PropertyAppVersion, int.MinValue);
             var newVersion = GetAppVersion(context);
 
             if(oldVersion != int.MinValue && oldVersion != newVersion)
@@ -229,31 +229,31 @@ namespace Gcm.Client
 
         internal static string SetRegistrationId(Context context, string registrationId)
         {
-            var prefs = GetGCMPreferences(context);
+            var prefs = GetGcmPreferences(context);
 
-            var oldRegistrationId = prefs.GetString(PROPERTY_REG_ID, "");
+            var oldRegistrationId = prefs.GetString(PropertyRegId, "");
             var appVersion = GetAppVersion(context);
             Logger.Debug("Saving registrationId on app version " + appVersion);
             var editor = prefs.Edit();
-            editor.PutString(PROPERTY_REG_ID, registrationId);
-            editor.PutInt(PROPERTY_APP_VERSION, appVersion);
+            editor.PutString(PropertyRegId, registrationId);
+            editor.PutInt(PropertyAppVersion, appVersion);
             editor.Commit();
             return oldRegistrationId;
         }
 
         public static void SetRegisteredOnServer(Context context, bool flag)
         {
-            var prefs = GetGCMPreferences(context);
+            var prefs = GetGcmPreferences(context);
             Logger.Debug("Setting registered on server status as: " + flag);
             var editor = prefs.Edit();
-            editor.PutBoolean(PROPERTY_ON_SERVER, flag);
+            editor.PutBoolean(PropertyOnServer, flag);
             editor.Commit();
         }
 
         public static bool IsRegisteredOnServer(Context context)
         {
-            var prefs = GetGCMPreferences(context);
-            var isRegistered = prefs.GetBoolean(PROPERTY_ON_SERVER, false);
+            var prefs = GetGcmPreferences(context);
+            var isRegistered = prefs.GetBoolean(PropertyOnServer, false);
             Logger.Debug("Is registered on server: " + isRegistered);
             return isRegistered;
         }
@@ -274,26 +274,26 @@ namespace Gcm.Client
         internal static void ResetBackoff(Context context)
         {
             Logger.Debug("resetting backoff for " + context.PackageName);
-            SetBackoff(context, DEFAULT_BACKOFF_MS);
+            SetBackoff(context, DefaultBackoffMs);
         }
 
         internal static int GetBackoff(Context context)
         {
-            var prefs = GetGCMPreferences(context);
-            return prefs.GetInt(BACKOFF_MS, DEFAULT_BACKOFF_MS);
+            var prefs = GetGcmPreferences(context);
+            return prefs.GetInt(BackoffMs, DefaultBackoffMs);
         }
 
         internal static void SetBackoff(Context context, int backoff)
         {
-            var prefs = GetGCMPreferences(context);
+            var prefs = GetGcmPreferences(context);
             var editor = prefs.Edit();
-            editor.PutInt(BACKOFF_MS, backoff);
+            editor.PutInt(BackoffMs, backoff);
             editor.Commit();
         }
 
-        private static ISharedPreferences GetGCMPreferences(Context context)
+        private static ISharedPreferences GetGcmPreferences(Context context)
         {
-            return context.GetSharedPreferences(PREFERENCES, FileCreationMode.Private);
+            return context.GetSharedPreferences(Preferences, FileCreationMode.Private);
         }
     }
 }

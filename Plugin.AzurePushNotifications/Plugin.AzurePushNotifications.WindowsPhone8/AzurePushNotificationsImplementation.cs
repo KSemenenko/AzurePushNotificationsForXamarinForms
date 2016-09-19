@@ -1,8 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Threading.Tasks;
-using Windows.Storage;
+﻿using System.Diagnostics;
 using Microsoft.Phone.Notification;
 using Microsoft.WindowsAzure.Messaging;
 using Plugin.AzurePushNotifications.Abstractions;
@@ -14,7 +10,7 @@ namespace Plugin.AzurePushNotifications
         public void RegisterForAzurePushNotification()
         {
             var channel = HttpNotificationChannel.Find("MyPushChannel");
-            if (channel == null)
+            if(channel == null)
             {
                 channel = new HttpNotificationChannel("MyPushChannel");
                 channel.Open();
@@ -30,18 +26,10 @@ namespace Plugin.AzurePushNotifications
             channel.ShellToastNotificationReceived += Channel_ShellToastNotificationReceived;
         }
 
-        private void Channel_ShellToastNotificationReceived(object sender, NotificationEventArgs e)
-        {
-            var conent = new ReceivedMessageEventArgs(e.Collection.ToString());
-            var message = OnMessageReceived;
-            message?.Invoke(null, conent);
-            Debug.WriteLine("Channel_PushNotificationReceived");
-        }
-
         public void UnregisterFromAzurePushNotification()
         {
             var channel = HttpNotificationChannel.Find("MyPushChannel");
-            if (channel == null)
+            if(channel == null)
             {
                 channel = new HttpNotificationChannel("MyPushChannel");
                 channel.Open();
@@ -57,6 +45,14 @@ namespace Plugin.AzurePushNotifications
             };
 
             channel.ShellToastNotificationReceived -= Channel_ShellToastNotificationReceived;
+        }
+
+        private void Channel_ShellToastNotificationReceived(object sender, NotificationEventArgs e)
+        {
+            var conent = new ReceivedMessageEventArgs(e.Collection.ToString());
+            var message = OnMessageReceived;
+            message?.Invoke(null, conent);
+            Debug.WriteLine("Channel_PushNotificationReceived");
         }
     }
 }
