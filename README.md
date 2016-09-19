@@ -37,7 +37,7 @@ public override void RegisteredForRemoteNotifications(UIApplication application,
 ```
 
 ## Android
-add in to MainActivity
+Add in to MainActivity
 ```cs
 protected override void OnCreate(Bundle bundle)
 {
@@ -51,6 +51,34 @@ protected override void OnCreate(Bundle bundle)
 }
 
 ```
+
+### For yours custom BroadcastReceiver
+
+
+#### Create Class like this:
+```cs
+[BroadcastReceiver(Permission = Constants.PermissionGcmIntents)]
+[IntentFilter(new[] {Intent.ActionBootCompleted})] // Allow GCM on boot and when app is closed   
+[IntentFilter(new[] {Constants.IntentFromGcmMessage}, Categories = new[] {"@PACKAGE_NAME@"})]
+[IntentFilter(new[] {Constants.IntentFromGcmRegistrationCallback}, Categories = new[] {"@PACKAGE_NAME@"})]
+[IntentFilter(new[] {Constants.IntentFromGcmLibraryRetry}, Categories = new[] {"@PACKAGE_NAME@"})]
+public class PushNotificationsBroadcastReceiver : GcmBroadcastReceiverBase<YOUR_SERVICE_CLASS>
+{
+}
+```
+
+#### Create service class like this:
+```cs
+[Service] //Must use the service tag
+public class YOUR_SERVICE_CLASS : GcmServiceBase
+{
+    protected override void OnMessage(Context context, Intent intent)
+    {
+        Console.WriteLine("Received Notification");   
+    } 
+}
+```
+
 
 ## In to App.cs
 ```cs

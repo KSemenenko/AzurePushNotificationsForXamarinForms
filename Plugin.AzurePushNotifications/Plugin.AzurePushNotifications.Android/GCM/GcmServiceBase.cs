@@ -1,8 +1,10 @@
 using System;
+using WindowsAzure.Messaging;
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Plugin.AzurePushNotifications;
 
 namespace Gcm.Client
 {
@@ -18,6 +20,8 @@ namespace Gcm.Client
         private static readonly object Lock = new object();
         private static int serviceId = 1;
 
+        protected static NotificationHub Hub;
+
         private readonly Random sRandom = new Random();
 
         private readonly string token = "";
@@ -26,10 +30,11 @@ namespace Gcm.Client
         ///     The GCM Sender Ids to use. Set by the constructor taking parameters but not by the one that doesn't. Be very
         ///     careful changing this value, preferably only set it in your constructor and only once.
         /// </summary>
-        protected string[] SenderIds = {};
+        protected string[] SenderIds;
 
         protected GcmServiceBase()
         {
+            SenderIds = new[] {PushNotificationCredentials.GoogleApiSenderId};
         }
 
         public GcmServiceBase(params string[] senderIds)
@@ -38,7 +43,9 @@ namespace Gcm.Client
             SenderIds = senderIds;
         }
 
-        protected abstract void OnMessage(Context context, Intent intent);
+        protected virtual void OnMessage(Context context, Intent intent)
+        {
+        }
 
         protected virtual void OnDeletedMessages(Context context, int total)
         {
@@ -49,11 +56,36 @@ namespace Gcm.Client
             return true;
         }
 
-        protected abstract void OnError(Context context, string errorId);
+        protected virtual void OnError(Context context, string errorId)
+        {
+        }
 
-        protected abstract void OnRegistered(Context context, string registrationId);
+        protected virtual void OnRegistered(Context context, string registrationId)
+        {
+            Hub = new NotificationHub(PushNotificationCredentials.AzureNotificationHubName, PushNotificationCredentials.AzureListenConnectionString, context);
+            try
+            {
+                Hub.UnregisterAll(registrationId);
+            }
+            catch(Exception ex)
+            {
+                //Log.Error(PushNotificationsBroadcastReceiver.Tag, ex.Message);
+            }
 
-        protected abstract void OnUnRegistered(Context context, string registrationId);
+            try
+            {
+                var hubRegistration = Hub.Register(registrationId, PushNotificationCredentials.Tags);
+            }
+            catch(Exception ex)
+            {
+                //Log.Error(PushNotificationsBroadcastReceiver.Tag, ex.Message);
+            }
+        }
+
+        protected virtual void OnUnRegistered(Context context, string registrationId)
+        {
+            Hub?.Unregister();
+        }
 
         protected override void OnHandleIntent(Intent intent)
         {
@@ -83,16 +115,7 @@ namespace Gcm.Client
                                     //Logger.Debug("Received deleted messages notification: " + nTotal);
                                     OnDeletedMessages(context, nTotal);
                                 }
-                                else
-                                {
-                                    //Logger.Debug("GCM returned invalid number of deleted messages: " + sTotal);
-                                }
                             }
-                        }
-                        else
-                        {
-                            // application is not using the latest GCM library
-                            //Logger.Debug("Received unknown special message: " + messageType);
                         }
                     }
                     else
@@ -138,11 +161,6 @@ namespace Gcm.Client
                     {
                         //Logger.Debug("Releasing Wakelock");
                         sWakeLock.Release();
-                    }
-                    else
-                    {
-                        //Should never happen during normal workflow
-                        //Logger.Debug("Wakelock reference is null");
                     }
                 }
             }
@@ -222,10 +240,6 @@ namespace Gcm.Client
                     {
                         GcmClient.SetBackoff(context, backoffTimeMs*2);
                     }
-                }
-                else
-                {
-                    //Logger.Debug("Not retrying failed operation");
                 }
             }
             else

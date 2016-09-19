@@ -14,12 +14,5 @@ namespace Plugin.AzurePushNotifications
     [IntentFilter(new[] {Constants.IntentFromGcmLibraryRetry}, Categories = new[] {"@PACKAGE_NAME@"})]
     public class PushNotificationsBroadcastReceiver : GcmBroadcastReceiverBase<PushNotificationsGcmService>
     {
-        public const string Tag = "PushNotificationsBroadcastReceiver-GCM";
-
-        /// <summary>
-        ///     IMPORTANT: Change this to your own Sender ID!
-        ///     The SENDER_ID is your Google API Console App Project Number
-        /// </summary>
-        public static string[] SenderIds = {PushNotificationCredentials.GoogleApiSenderId};
     }
 }

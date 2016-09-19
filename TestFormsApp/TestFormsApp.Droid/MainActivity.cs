@@ -1,13 +1,17 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Gcm.Client;
 using Plugin.AzurePushNotifications;
 using Environment = System.Environment;
+using WindowsAzure.Messaging;
 
 namespace TestFormsApp.Droid
 {
@@ -24,6 +28,26 @@ namespace TestFormsApp.Droid
 
             LoadApplication(new TestFormsApp.App());
         }
+    }
+
+    [BroadcastReceiver(Permission = Constants.PermissionGcmIntents)]
+    [IntentFilter(new[] { Intent.ActionBootCompleted })] // Allow GCM on boot and when app is closed   
+    [IntentFilter(new[] { Constants.IntentFromGcmMessage }, Categories = new[] { "@PACKAGE_NAME@" })]
+    [IntentFilter(new[] { Constants.IntentFromGcmRegistrationCallback }, Categories = new[] { "@PACKAGE_NAME@" })]
+    [IntentFilter(new[] { Constants.IntentFromGcmLibraryRetry }, Categories = new[] { "@PACKAGE_NAME@" })]
+    public class PushNotificationsBroadcastReceiver22 : GcmBroadcastReceiverBase<PushNotificationsGcmService22>
+    {
+    }
+
+    [Service] //Must use the service tag
+    public class PushNotificationsGcmService22 : GcmServiceBase
+    {
+ 
+        protected override void OnMessage(Context context, Intent intent)
+        {
+            Console.WriteLine("Received Notification");
+        }
+
     }
 }
 
