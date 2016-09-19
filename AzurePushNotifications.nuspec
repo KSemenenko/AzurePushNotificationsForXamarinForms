@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8.3">
     <id>ksemenenko.AzurePushNotifications</id>
-    <version>0.0.1.0-pre</version>
+    <version>0.0.2.0-pre</version>
     <title>Azure Push Notifications Plugin for Xamarin and Windows</title>
     <authors>ksemenenko</authors>
     <owners>ksemenenko</owners>
@@ -19,31 +19,22 @@
     <dependencies>
       <group targetFramework="UAP10">
         <dependency id="WindowsAzure.Messaging.Managed" version="0.1.7.9" />
-        <dependency id="Newtonsoft.Json" version="9.0.1" />
       </group>
       <group targetFramework="wp8">
         <dependency id="WindowsAzure.Messaging.Managed" version="0.1.7.9" />
-        <dependency id="Newtonsoft.Json" version="9.0.1" />
       </group>
       <group targetFramework="wpa81">
         <dependency id="WindowsAzure.Messaging.Managed" version="0.1.7.9" />
-        <dependency id="Newtonsoft.Json" version="9.0.1" />
       </group>
       <group targetFramework="win8">
         <dependency id="WindowsAzure.Messaging.Managed" version="0.1.7.9" />
-        <dependency id="Newtonsoft.Json" version="9.0.1" />
       </group>
-      <group targetFramework="portable-net45"/>
       <group targetFramework="MonoAndroid403">
         <dependency id="Xamarin.Azure.NotificationHubs.Android" version="0.4.0" />
-        <dependency id="Newtonsoft.Json" version="9.0.1" />
       </group>
       <group targetFramework="XamariniOS10">
-        <dependency id="Xamarin.Azure.NotificationHubs.iOS" version="1.2.5" />
-        <dependency id="Newtonsoft.Json" version="9.0.1" />
+        <dependency id="Xamarin.Azure.NotificationHubs.iOS" version="1.2.5.2" />
       </group>
-      <group targetFramework="XamarinMac20"/>
-      <group targetFramework="MonoTouch"/>
     </dependencies>
   </metadata>
   <files>

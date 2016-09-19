@@ -1,35 +1,45 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
 using Android.App;
-using Android.Provider;
-using Plugin.AzurePushNotifications.Abstractions;
-using Android.Util;
 using Gcm.Client;
+using Plugin.AzurePushNotifications.Abstractions;
 
 namespace Plugin.AzurePushNotifications
 {
     public partial class AzurePushNotificationsImplementation : IAzurePushNotifications
     {
         //https://azure.microsoft.com/en-us/documentation/articles/xamarin-notification-hubs-push-notifications-android-gcm/
+
+        private Activity mainactivity;
+
         public void RegisterForAzurePushNotification()
         {
-         
+            if(mainactivity != null)
+            {
+                GcmClient.Register(mainactivity, PushNotificationCredentials.GoogleApiSenderId);
+            }
         }
 
         public void UnregisterFromAzurePushNotification()
         {
-            throw new NotImplementedException();
+            if(mainactivity != null)
+            {
+                GcmClient.UnRegister(mainactivity);
+            }
         }
 
         public void InitFromMainActivity(Activity activity)
         {
-            GcmClient.CheckDevice(activity);
-            GcmClient.CheckManifest(activity);
-
-            // Register for push notifications
-            Log.Info("MainActivity", "Registering...");
-            GcmClient.Register(activity, PushNotificationCredentials.GoogleApiSenderId);
+            try
+            {
+                GcmClient.CheckDevice(activity);
+                GcmClient.CheckManifest(activity);
+                mainactivity = activity;
+            }
+            catch(Exception ex)
+            {
+                Logger.Debug(ex.Message);
+            }
         }
 
         public void PushNotificationReceived(string content)
