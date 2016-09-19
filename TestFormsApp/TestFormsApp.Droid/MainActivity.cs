@@ -35,12 +35,12 @@ namespace TestFormsApp.Droid
     [IntentFilter(new[] { Constants.IntentFromGcmMessage }, Categories = new[] { "@PACKAGE_NAME@" })]
     [IntentFilter(new[] { Constants.IntentFromGcmRegistrationCallback }, Categories = new[] { "@PACKAGE_NAME@" })]
     [IntentFilter(new[] { Constants.IntentFromGcmLibraryRetry }, Categories = new[] { "@PACKAGE_NAME@" })]
-    public class PushNotificationsBroadcastReceiver22 : GcmBroadcastReceiverBase<PushNotificationsGcmService22>
+    public class PushNotificationsBroadcastReceiver : GcmBroadcastReceiverBase<MyMessageService>
     {
     }
 
     [Service] //Must use the service tag
-    public class PushNotificationsGcmService22 : GcmServiceBase
+    public class MyMessageService : GcmServiceBase
     {
  
         protected override void OnMessage(Context context, Intent intent)
