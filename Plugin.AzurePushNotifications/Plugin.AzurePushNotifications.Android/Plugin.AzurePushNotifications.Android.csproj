@@ -58,12 +58,14 @@
     <Compile Include="AzurePushNotificationsImplementation.cs" />
     <Compile Include="CrossAzurePushNotificationsPlatform.cs" />
     <Compile Include="GCM\Constants.cs" />
+    <Compile Include="GCM\GcmBroadcastReceiverBase.cs" />
     <Compile Include="GCM\GcmServiceBase.cs" />
     <Compile Include="GCM\GcmClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="..\..\AzurePushNotifications.Shared\Properties\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="PushNotificationsBroadcastReceiver.cs" />
     <Compile Include="PushNotificationsGcmService.cs" />
   </ItemGroup>
   <ItemGroup>
