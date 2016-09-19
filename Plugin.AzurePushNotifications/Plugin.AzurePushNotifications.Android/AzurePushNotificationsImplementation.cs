@@ -10,21 +10,19 @@ namespace Plugin.AzurePushNotifications
     {
         //https://azure.microsoft.com/en-us/documentation/articles/xamarin-notification-hubs-push-notifications-android-gcm/
 
-        private Activity mainactivity;
-
         public void RegisterForAzurePushNotification()
         {
-            if(mainactivity != null)
+            if(GcmClient.MainActivity != null)
             {
-                GcmClient.Register(mainactivity, PushNotificationCredentials.GoogleApiSenderId);
+                GcmClient.Register(GcmClient.MainActivity, PushNotificationCredentials.GoogleApiSenderId);
             }
         }
 
         public void UnregisterFromAzurePushNotification()
         {
-            if(mainactivity != null)
+            if(GcmClient.MainActivity != null)
             {
-                GcmClient.UnRegister(mainactivity);
+                GcmClient.UnRegister(GcmClient.MainActivity);
             }
         }
 
@@ -34,11 +32,11 @@ namespace Plugin.AzurePushNotifications
             {
                 GcmClient.CheckDevice(activity);
                 GcmClient.CheckManifest(activity);
-                mainactivity = activity;
+                GcmClient.MainActivity = activity;
             }
             catch(Exception ex)
             {
-                Logger.Debug(ex.Message);
+                //Logger.Debug(ex.Message);
             }
         }
 

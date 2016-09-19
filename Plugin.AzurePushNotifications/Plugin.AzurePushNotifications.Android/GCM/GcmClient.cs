@@ -4,6 +4,7 @@ using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using Android.Util;
 
 namespace Gcm.Client
 {
@@ -16,6 +17,8 @@ namespace Gcm.Client
         private const string PropertyRegId = "regId";
         private const string PropertyAppVersion = "appVersion";
         private const string PropertyOnServer = "onServer";
+        public static Activity MainActivity;
+
 
         //static GCMBroadcastReceiver sRetryReceiver;
 
@@ -37,6 +40,7 @@ namespace Gcm.Client
             {
                 throw new InvalidOperationException("Device does not have package " + GsfPackage);
             }
+
         }
 
         public static void CheckManifest(Context context)
@@ -82,7 +86,7 @@ namespace Gcm.Client
                 throw new InvalidOperationException("No Receiver for package " + packageName);
             }
 
-            Logger.Debug("number of receivers for " + packageName + ": " + receivers.Count);
+            //Logger.Debug("number of receivers for " + packageName + ": " + receivers.Count);
 
             var allowedReceivers = new HashSet<string>();
 
@@ -118,7 +122,7 @@ namespace Gcm.Client
                 throw new InvalidOperationException("No receivers for action " + action);
             }
 
-            Logger.Debug("Found " + receivers.Count + " receivers for action " + action);
+            //Logger.Debug("Found " + receivers.Count + " receivers for action " + action);
 
             foreach(var receiver in receivers)
             {
@@ -147,7 +151,7 @@ namespace Gcm.Client
 
             var senders = string.Join(",", senderIds);
 
-            Logger.Debug("Registering app " + context.PackageName + " of senders " + senders);
+            //Logger.Debug("Registering app " + context.PackageName + " of senders " + senders);
 
             var intent = new Intent(Constants.IntentToGcmRegistration);
             intent.SetPackage(GsfPackage);
@@ -167,7 +171,7 @@ namespace Gcm.Client
 
         internal static void InternalUnRegister(Context context)
         {
-            Logger.Debug("Unregistering app " + context.PackageName);
+            //Logger.Debug("Unregistering app " + context.PackageName);
 
             var intent = new Intent(Constants.IntentToGcmUnregistration);
             intent.SetPackage(GsfPackage);
@@ -179,20 +183,20 @@ namespace Gcm.Client
 
         private static void SetRetryBroadcastReceiver(Context context)
         {
-            /*			if (sRetryReceiver == null)
-            {
-                sRetryReceiver = new GCMBroadcastReceiver();
-                var category = context.PackageName;
+            //if (sRetryReceiver == null)
+            //{
+            //    sRetryReceiver = new GCMBroadcastReceiver();
+            //    var category = context.PackageName;
 
-                var filter = new IntentFilter(GCMConstants.INTENT_FROM_GCM_LIBRARY_RETRY);
-                filter.AddCategory(category);
+            //    var filter = new IntentFilter(GCMConstants.INTENT_FROM_GCM_LIBRARY_RETRY);
+            //    filter.AddCategory(category);
 
-                var permission = category + ".permission.C2D_MESSAGE";
+            //    var permission = category + ".permission.C2D_MESSAGE";
 
-                Log.Verbose(TAG, "Registering receiver");
+            //    Log.Verbose(TAG, "Registering receiver");
 
-                context.RegisterReceiver(sRetryReceiver, filter, permission, null);
-            }*/
+            //    context.RegisterReceiver(sRetryReceiver, filter, permission, null);
+            //}
         }
 
         public static string GetRegistrationId(Context context)
@@ -206,7 +210,7 @@ namespace Gcm.Client
 
             if(oldVersion != int.MinValue && oldVersion != newVersion)
             {
-                Logger.Debug("App version changed from " + oldVersion + " to " + newVersion + "; resetting registration id");
+                //Logger.Debug("App version changed from " + oldVersion + " to " + newVersion + "; resetting registration id");
 
                 ClearRegistrationId(context);
                 registrationId = string.Empty;
@@ -233,7 +237,7 @@ namespace Gcm.Client
 
             var oldRegistrationId = prefs.GetString(PropertyRegId, "");
             var appVersion = GetAppVersion(context);
-            Logger.Debug("Saving registrationId on app version " + appVersion);
+            //Logger.Debug("Saving registrationId on app version " + appVersion);
             var editor = prefs.Edit();
             editor.PutString(PropertyRegId, registrationId);
             editor.PutInt(PropertyAppVersion, appVersion);
@@ -244,7 +248,7 @@ namespace Gcm.Client
         public static void SetRegisteredOnServer(Context context, bool flag)
         {
             var prefs = GetGcmPreferences(context);
-            Logger.Debug("Setting registered on server status as: " + flag);
+           // Logger.Debug("Setting registered on server status as: " + flag);
             var editor = prefs.Edit();
             editor.PutBoolean(PropertyOnServer, flag);
             editor.Commit();
@@ -254,7 +258,7 @@ namespace Gcm.Client
         {
             var prefs = GetGcmPreferences(context);
             var isRegistered = prefs.GetBoolean(PropertyOnServer, false);
-            Logger.Debug("Is registered on server: " + isRegistered);
+           // Logger.Debug("Is registered on server: " + isRegistered);
             return isRegistered;
         }
 
@@ -273,7 +277,7 @@ namespace Gcm.Client
 
         internal static void ResetBackoff(Context context)
         {
-            Logger.Debug("resetting backoff for " + context.PackageName);
+           // Logger.Debug("resetting backoff for " + context.PackageName);
             SetBackoff(context, DefaultBackoffMs);
         }
 
