@@ -24,7 +24,7 @@ namespace TestFormsApp.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
-            CrossAzurePushNotifications.Platform.InitFromMainActivity(this);
+            CrossAzurePushNotifications.Platform.Init(this);
 
             LoadApplication(new TestFormsApp.App());
         }

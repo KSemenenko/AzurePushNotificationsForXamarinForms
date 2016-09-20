@@ -45,7 +45,7 @@ protected override void OnCreate(Bundle bundle)
 
     global::Xamarin.Forms.Forms.Init(this, bundle);
 
-    CrossAzurePushNotifications.Platform.InitFromMainActivity(this); // for init
+    CrossAzurePushNotifications.Platform.Init(this); // for init
 
     LoadApplication(new TestFormsApp.App());
 }

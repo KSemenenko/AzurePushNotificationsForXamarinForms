@@ -26,7 +26,7 @@ namespace Plugin.AzurePushNotifications
             }
         }
 
-        public void InitFromMainActivity(Activity activity)
+        public void Init(Activity activity)
         {
             try
             {
