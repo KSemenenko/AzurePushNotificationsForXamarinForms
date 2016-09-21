@@ -8,7 +8,6 @@ namespace Plugin.AzurePushNotifications.Abstractions
 {
     public sealed class ReceivedMessageEventArgs
     {
-
         /// <summary>
         /// 
         /// </summary>
@@ -17,13 +16,13 @@ namespace Plugin.AzurePushNotifications.Abstractions
         {
             Content = content;
         }
-        public string Content { get;}
-        
+
+        public string Content { get; }
     }
 
     //
 
-    public sealed class BadgeNotification 
+    public sealed class BadgeNotification
     {
         //
         // Summary:
@@ -53,7 +52,7 @@ namespace Plugin.AzurePushNotifications.Abstractions
         public DateTimeOffset? ExpirationTime { get; set; }
     }
 
-    public sealed class RawNotification 
+    public sealed class RawNotification
     {
         //
         // Summary:
@@ -91,7 +90,7 @@ namespace Plugin.AzurePushNotifications.Abstractions
     //     Defines an update to a tile, including its visuals, identification tag, and expiration
     //     time.
 
-    public sealed class TileNotification 
+    public sealed class TileNotification
     {
         //
         // Summary:

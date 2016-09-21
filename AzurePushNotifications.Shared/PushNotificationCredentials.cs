@@ -13,7 +13,7 @@ namespace Plugin.AzurePushNotifications
         /// <summary>
         /// Google API Project Number.
         /// </summary>
-        public static string GoogleApiSenderId = string.Empty; 
+        public static string GoogleApiSenderId = string.Empty;
 
         /// <summary>
         /// The name of the Azure Notification Hub created inside Azure portal.
@@ -26,7 +26,6 @@ namespace Plugin.AzurePushNotifications
         /// </summary>
         public static string AzureListenConnectionString = string.Empty;
 
-        
         /// <summary>
         /// The tags to register for with Azure Push Notifications.
         /// </summary>

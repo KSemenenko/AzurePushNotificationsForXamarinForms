@@ -19,7 +19,6 @@ namespace Gcm.Client
         private const string PropertyOnServer = "onServer";
         public static Activity MainActivity;
 
-
         //static GCMBroadcastReceiver sRetryReceiver;
 
         public static void CheckDevice(Context context)
@@ -40,7 +39,6 @@ namespace Gcm.Client
             {
                 throw new InvalidOperationException("Device does not have package " + GsfPackage);
             }
-
         }
 
         public static void CheckManifest(Context context)
@@ -248,7 +246,7 @@ namespace Gcm.Client
         public static void SetRegisteredOnServer(Context context, bool flag)
         {
             var prefs = GetGcmPreferences(context);
-           // Logger.Debug("Setting registered on server status as: " + flag);
+            // Logger.Debug("Setting registered on server status as: " + flag);
             var editor = prefs.Edit();
             editor.PutBoolean(PropertyOnServer, flag);
             editor.Commit();
@@ -258,7 +256,7 @@ namespace Gcm.Client
         {
             var prefs = GetGcmPreferences(context);
             var isRegistered = prefs.GetBoolean(PropertyOnServer, false);
-           // Logger.Debug("Is registered on server: " + isRegistered);
+            // Logger.Debug("Is registered on server: " + isRegistered);
             return isRegistered;
         }
 
@@ -277,7 +275,7 @@ namespace Gcm.Client
 
         internal static void ResetBackoff(Context context)
         {
-           // Logger.Debug("resetting backoff for " + context.PackageName);
+            // Logger.Debug("resetting backoff for " + context.PackageName);
             SetBackoff(context, DefaultBackoffMs);
         }
 

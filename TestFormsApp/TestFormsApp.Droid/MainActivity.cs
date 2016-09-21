@@ -31,10 +31,10 @@ namespace TestFormsApp.Droid
     }
 
     [BroadcastReceiver(Permission = Constants.PermissionGcmIntents)]
-    [IntentFilter(new[] { Intent.ActionBootCompleted })] // Allow GCM on boot and when app is closed   
-    [IntentFilter(new[] { Constants.IntentFromGcmMessage }, Categories = new[] { "@PACKAGE_NAME@" })]
-    [IntentFilter(new[] { Constants.IntentFromGcmRegistrationCallback }, Categories = new[] { "@PACKAGE_NAME@" })]
-    [IntentFilter(new[] { Constants.IntentFromGcmLibraryRetry }, Categories = new[] { "@PACKAGE_NAME@" })]
+    [IntentFilter(new[] {Intent.ActionBootCompleted})] // Allow GCM on boot and when app is closed   
+    [IntentFilter(new[] {Constants.IntentFromGcmMessage}, Categories = new[] {"@PACKAGE_NAME@"})]
+    [IntentFilter(new[] {Constants.IntentFromGcmRegistrationCallback}, Categories = new[] {"@PACKAGE_NAME@"})]
+    [IntentFilter(new[] {Constants.IntentFromGcmLibraryRetry}, Categories = new[] {"@PACKAGE_NAME@"})]
     public class PushNotificationsBroadcastReceiver : GcmBroadcastReceiverBase<MyMessageService>
     {
     }
@@ -42,12 +42,9 @@ namespace TestFormsApp.Droid
     [Service] //Must use the service tag
     public class MyMessageService : GcmServiceBase
     {
- 
         protected override void OnMessage(Context context, Intent intent)
         {
             Console.WriteLine("Received Notification");
         }
-
     }
 }
-
