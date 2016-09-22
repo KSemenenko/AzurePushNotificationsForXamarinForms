@@ -9,7 +9,7 @@
     <owners>ksemenenko</owners>
     <licenseUrl>https://github.com/KSemenenko/AzurePushNotificationsForXamarinForms/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/KSemenenko/AzurePushNotificationsForXamarinForms</projectUrl>
-    <!--<iconUrl>https://github.com/KSemenenko/AzurePushNotificationsForXamarinForms/icons/plugin_icon_nuget.png</iconUrl>-->
+    <iconUrl>https://raw.githubusercontent.com/KSemenenko/AzurePushNotificationsForXamarinForms/master/icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
       This project is a cross platform library for Xamarin, which enables a handy use of AzurePushNotifications in your applications.
