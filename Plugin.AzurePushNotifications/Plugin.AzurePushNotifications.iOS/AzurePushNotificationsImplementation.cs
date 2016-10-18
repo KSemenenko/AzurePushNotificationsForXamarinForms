@@ -47,7 +47,8 @@ namespace Plugin.AzurePushNotifications
                     return;
                 }
 
-                NSSet tags = null; // create tags if you want
+                NSSet tags = new NSSet(PushNotificationCredentials.Tags);
+
                 Hub.RegisterNativeAsync(deviceToken, tags, errorCallback =>
                 {
                     if(errorCallback != null)
