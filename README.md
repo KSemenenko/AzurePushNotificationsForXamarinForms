@@ -1,8 +1,6 @@
 # AzurePushNotificationsForXamarinForms
 Azure Push Notifications for Xamarin Forms
 
-# Alpha version
-
 ## Available at NuGet. 
 https://www.nuget.org/packages/ksemenenko.AzurePushNotifications/
 
