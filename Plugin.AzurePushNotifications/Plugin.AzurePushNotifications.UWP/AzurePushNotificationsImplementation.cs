@@ -42,9 +42,31 @@ namespace Plugin.AzurePushNotifications
 
         private void Channel_PushNotificationReceived(PushNotificationChannel sender, PushNotificationReceivedEventArgs args)
         {
-            var conent = new ReceivedMessageEventArgs(args?.RawNotification?.Content ?? string.Empty);
+            ReceivedMessageEventArgs content;
+
+            switch (args.NotificationType)
+            {
+                case PushNotificationType.Badge:
+                    content = new ReceivedMessageEventArgs(args.BadgeNotification?.Content.GetXml() ?? string.Empty, args.BadgeNotification);
+                    break;
+                case PushNotificationType.Tile:
+                    content = new ReceivedMessageEventArgs(args.TileNotification?.Content.GetXml() ?? string.Empty, args.TileNotification);
+                    break;
+                case PushNotificationType.Toast:
+                    content = new ReceivedMessageEventArgs(args.ToastNotification?.Content.GetXml() ?? string.Empty, args.ToastNotification);
+                    break;
+
+                case PushNotificationType.Raw:
+                    content = new ReceivedMessageEventArgs(args.RawNotification?.Content ?? string.Empty, args.RawNotification);
+                    break;
+
+                default:
+                    content = new ReceivedMessageEventArgs(string.Empty);
+                    break;
+            }
+
             var message = OnMessageReceived;
-            message?.Invoke(null, conent);
+            message?.Invoke(null, content);
         }
     }
 }
