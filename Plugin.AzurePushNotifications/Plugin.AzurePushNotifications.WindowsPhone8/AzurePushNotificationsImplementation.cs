@@ -50,7 +50,6 @@ namespace Plugin.AzurePushNotifications
 
         private void Channel_ShellToastNotificationReceived(object sender, NotificationEventArgs e)
         {
-            
             var conent = new ReceivedMessageEventArgs(string.Join(";", e?.Collection?.Select(x => x.Key + "=" + x.Value).ToArray() ?? new [] {string.Empty}),e?.Collection);
             var message = OnMessageReceived;
             message?.Invoke(null, conent);

@@ -26,11 +26,10 @@ namespace Plugin.AzurePushNotifications
             {
                 await hub.RegisterNativeAsync(channel.Uri, PushNotificationCredentials.Tags);
                 channel.PushNotificationReceived += Channel_PushNotificationReceived;
-                Debug.WriteLine("Connected to PushHub");
             }
             catch(Exception ex)
             {
-                Debug.WriteLine("Error");
+                Debug.WriteLine(ex);
             }
         }
 
@@ -67,6 +66,7 @@ namespace Plugin.AzurePushNotifications
 
                 case PushNotificationType.Raw:
                     content = new ReceivedMessageEventArgs(args.RawNotification?.Content ?? string.Empty, args.RawNotification);
+                    args.Cancel = true;
                     break;
 
                 default:

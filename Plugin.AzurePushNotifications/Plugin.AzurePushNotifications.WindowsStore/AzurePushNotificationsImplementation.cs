@@ -60,6 +60,7 @@ namespace Plugin.AzurePushNotifications
 
                 case PushNotificationType.Raw:
                     content = new ReceivedMessageEventArgs(args.RawNotification?.Content ?? string.Empty, args.RawNotification);
+                    args.Cancel = true;
                     break;
 
                 default:
