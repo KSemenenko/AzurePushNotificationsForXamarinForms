@@ -23,7 +23,6 @@ namespace Plugin.AzurePushNotifications
                 PushNotificationCredentials.AzureListenConnectionString);
 
             await hub.RegisterNativeAsync(channel.Uri, PushNotificationCredentials.Tags);
-
             channel.PushNotificationReceived += Channel_PushNotificationReceived; 
         }
 
@@ -38,7 +37,6 @@ namespace Plugin.AzurePushNotifications
                 PushNotificationCredentials.AzureListenConnectionString);
 
             await hub.UnregisterNativeAsync();
-
             channel = null;
         }
 
