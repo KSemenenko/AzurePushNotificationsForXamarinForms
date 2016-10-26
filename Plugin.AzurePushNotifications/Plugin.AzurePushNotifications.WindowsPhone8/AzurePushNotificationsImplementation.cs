@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 using Microsoft.Phone.Notification;
 using Microsoft.WindowsAzure.Messaging;
 using Plugin.AzurePushNotifications.Abstractions;
@@ -49,10 +50,10 @@ namespace Plugin.AzurePushNotifications
 
         private void Channel_ShellToastNotificationReceived(object sender, NotificationEventArgs e)
         {
-            var conent = new ReceivedMessageEventArgs(e.Collection.ToString());
+            
+            var conent = new ReceivedMessageEventArgs(string.Join(";", e?.Collection?.Select(x => x.Key + "=" + x.Value).ToArray() ?? new [] {string.Empty}),e?.Collection);
             var message = OnMessageReceived;
             message?.Invoke(null, conent);
-            Debug.WriteLine("Channel_PushNotificationReceived");
         }
     }
 }

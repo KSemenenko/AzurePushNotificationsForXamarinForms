@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8.3">
     <id>ksemenenko.AzurePushNotifications</id>
-    <version>0.0.4.1</version>
+    <version>0.0.4.2</version>
     <title>Azure Push Notifications Plugin for Xamarin and Windows</title>
     <authors>ksemenenko</authors>
     <owners>ksemenenko</owners>

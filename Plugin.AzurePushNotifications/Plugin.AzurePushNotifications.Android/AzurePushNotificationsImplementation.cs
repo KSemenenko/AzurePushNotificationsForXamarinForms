@@ -45,7 +45,6 @@ namespace Plugin.AzurePushNotifications
             var conent = new ReceivedMessageEventArgs(content);
             var message = OnMessageReceived;
             message?.Invoke(null, conent);
-            Debug.WriteLine("Channel_PushNotificationReceived");
         }
     }
 }

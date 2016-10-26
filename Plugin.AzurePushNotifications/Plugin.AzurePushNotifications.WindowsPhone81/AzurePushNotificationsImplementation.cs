@@ -51,10 +51,9 @@ namespace Plugin.AzurePushNotifications
 
         private void Channel_PushNotificationReceived(PushNotificationChannel sender, PushNotificationReceivedEventArgs args)
         {
-            var conent = new ReceivedMessageEventArgs(args.RawNotification.Content);
+            var conent = new ReceivedMessageEventArgs(args?.RawNotification?.Content ?? string.Empty);
             var message = OnMessageReceived;
             message?.Invoke(null, conent);
-            Debug.WriteLine("Channel_PushNotificationReceived");
         }
     }
 }
