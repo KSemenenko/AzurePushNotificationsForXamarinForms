@@ -24,7 +24,7 @@ namespace Plugin.AzurePushNotifications
 
             await hub.RegisterNativeAsync(channel.Uri, PushNotificationCredentials.Tags);
 
-            channel.PushNotificationReceived += Channel_PushNotificationReceived;
+            channel.PushNotificationReceived += Channel_PushNotificationReceived; 
         }
 
         public async void UnregisterFromAzurePushNotification()

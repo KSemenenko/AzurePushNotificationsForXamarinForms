@@ -133,18 +133,10 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Properties\Plugin.Plugin.AzurePushNotifications.UWP.rd.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Plugin.AzurePushNotifications.Abstractions\Plugin.AzurePushNotifications.Abstractions.csproj">
       <Project>{6edb0588-ffc5-4ef5-8a99-9e241d0f878d}</Project>
       <Name>Plugin.AzurePushNotifications.Abstractions</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System.Runtime">
-      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\System.Runtime.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Import Project="..\..\AzurePushNotifications.Shared\AzurePushNotifications.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plugin.AzurePushNotifications.Abstractions
 {
-    public sealed class ReceivedMessageEventArgs
+    public class ReceivedMessageEventArgs
     {
         /// <summary>
         /// 
@@ -15,12 +15,14 @@ namespace Plugin.AzurePushNotifications.Abstractions
         public ReceivedMessageEventArgs(string content)
         {
             Content = content;
+            RawContent = content;
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="content"></param>
+        /// <param name="rawContent"></param>
         public ReceivedMessageEventArgs(string content, object rawContent)
         {
             Content = content;
