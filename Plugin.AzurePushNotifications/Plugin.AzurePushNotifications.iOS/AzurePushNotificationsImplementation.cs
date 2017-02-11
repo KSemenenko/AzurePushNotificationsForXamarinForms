@@ -84,7 +84,7 @@ namespace Plugin.AzurePushNotifications
                 // so keep that in mind.
                 if(aps.ContainsKey(new NSString("alert")))
                 {
-                    alert = (aps[new NSString("alert")] as NSString) ?? "";
+                    alert = (aps[new NSString("alert")] as NSString) ?? string.Empty;
                 }
 
                 //If this came from the ReceivedRemoteNotification while the app was running,
