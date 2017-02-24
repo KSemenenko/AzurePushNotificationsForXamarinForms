@@ -40,9 +40,9 @@ namespace Plugin.AzurePushNotifications
             }
         }
 
-        public void PushNotificationReceived(string content)
+        public void PushNotificationReceived(string content, object rawContent)
         {
-            var conent = new ReceivedMessageEventArgs(content);
+            var conent = new ReceivedMessageEventArgs(content, rawContent);
             var message = OnMessageReceived;
             message?.Invoke(null, conent);
         }

@@ -24,12 +24,12 @@ namespace Plugin.AzurePushNotifications
             if(!string.IsNullOrEmpty(messageText))
             {
                 //createNotification("New hub message!", messageText);
-                CrossAzurePushNotifications.Platform.PushNotificationReceived(messageText);
+                CrossAzurePushNotifications.Platform.PushNotificationReceived(messageText, messageText);
             }
             else
             {
                 //createNotification("Unknown message details", msg.ToString());
-                CrossAzurePushNotifications.Platform.PushNotificationReceived(msg.ToString());
+                CrossAzurePushNotifications.Platform.PushNotificationReceived(msg.ToString(), intent.Extras);
             }
         }
     }
