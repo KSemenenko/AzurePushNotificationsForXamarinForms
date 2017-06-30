@@ -38,5 +38,16 @@ namespace TestFormsApp.iOS
         {
             CrossAzurePushNotifications.Platform.RegisteredForRemoteNotifications(deviceToken);
         }
+
+        public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
+        {
+            Console.WriteLine("FailedToRegisterForRemoteNotifications: " + error);
+        }
+
+        //[Export("userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:")]
+        //public void DidReceiveNotificationResponse(UserNotifications.UNUserNotificationCenter center, UserNotifications.UNNotificationResponse response, Action completionHandler)
+        //{
+        //
+        //}
     }
 }

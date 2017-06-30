@@ -316,3 +316,6 @@ bin/
 obj/
 *.userprefs
 
+/Plugin.AzurePushNotifications/Plugin.AzurePushNotifications.Android/Plugin.AzurePushNotifications.Android.csproj.bak
+*.bak
+/.gitattributes

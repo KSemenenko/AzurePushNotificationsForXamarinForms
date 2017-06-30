@@ -14,13 +14,19 @@ namespace Plugin.AzurePushNotifications
 
         public void RegisterForAzurePushNotification()
         {
-            if(UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
+            if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
             {
-                var pushSettings = UIUserNotificationSettings.GetSettingsForTypes(
-                    UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
-                    new NSSet());
-
-                UIApplication.SharedApplication.RegisterUserNotificationSettings(pushSettings);
+                var authOptions = UserNotifications.UNAuthorizationOptions.Alert | UserNotifications.UNAuthorizationOptions.Badge | UserNotifications.UNAuthorizationOptions.Sound;
+                UserNotifications.UNUserNotificationCenter.Current.RequestAuthorization(authOptions, (granted, error) =>
+                {
+                    Console.WriteLine(granted);
+                });
+                UIApplication.SharedApplication.RegisterForRemoteNotifications();
+            }
+            else if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
+            {
+                var settings = UIUserNotificationSettings.GetSettingsForTypes(UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound, new NSSet());
+                UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
                 UIApplication.SharedApplication.RegisterForRemoteNotifications();
             }
             else
@@ -37,11 +43,13 @@ namespace Plugin.AzurePushNotifications
 
         public void RegisteredForRemoteNotifications(NSData deviceToken)
         {
+            Console.WriteLine("deviceToken: " + deviceToken);
+
             Hub = new SBNotificationHub(PushNotificationCredentials.AzureListenConnectionString, PushNotificationCredentials.AzureNotificationHubName);
 
             Hub.UnregisterAllAsync(deviceToken, error =>
             {
-                if(error != null)
+                if (error != null)
                 {
                     Console.WriteLine("Error calling Unregister: {0}", error.ToString());
                     return;
@@ -51,24 +59,18 @@ namespace Plugin.AzurePushNotifications
 
                 Hub.RegisterNativeAsync(deviceToken, tags, errorCallback =>
                 {
-                    if(errorCallback != null)
+                    if (errorCallback != null)
                     {
                         Console.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
                     }
                 });
             });
-
-            // Register for Notifications
-            UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(
-                UIRemoteNotificationType.Alert |
-                UIRemoteNotificationType.Badge |
-                UIRemoteNotificationType.Sound);
         }
 
         public void ProcessNotification(NSDictionary options)
         {
             // Check to see if the dictionary has the aps key.  This is the notification payload you would have sent
-            if(null != options && options.ContainsKey(new NSString("aps")))
+            if (null != options && options.ContainsKey(new NSString("aps")))
             {
                 //Get the aps dictionary
                 var aps = options.ObjectForKey(new NSString("aps")) as NSDictionary;
@@ -82,7 +84,7 @@ namespace Plugin.AzurePushNotifications
                 // your "alert" object from the aps dictionary will be another NSDictionary.
                 // Basically the JSON gets dumped right into a NSDictionary,
                 // so keep that in mind.
-                if(aps.ContainsKey(new NSString("alert")))
+                if (aps.ContainsKey(new NSString("alert")))
                 {
                     alert = (aps[new NSString("alert")] as NSString) ?? string.Empty;
                 }
@@ -91,13 +93,13 @@ namespace Plugin.AzurePushNotifications
                 // we of course need to manually process things like the sound, badge, and alert.
 
                 //Manually show an alert
-                if(!string.IsNullOrEmpty(alert))
-                {
-                    var avAlert = new UIAlertView("Notification", alert, null, "OK", null);
-                    avAlert.Show();
-                }
+                //if (!string.IsNullOrEmpty(alert))
+                //{
+                //	var avAlert = new UIAlertView("Notification", alert, null, "OK", null);
+                //	avAlert.Show();
+                //}
 
-                var content = new ReceivedMessageEventArgs(alert,options);
+                var content = new ReceivedMessageEventArgs(alert, options);
                 var message = OnMessageReceived;
                 message?.Invoke(null, content);
             }
